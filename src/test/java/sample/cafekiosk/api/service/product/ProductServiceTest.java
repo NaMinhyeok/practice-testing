@@ -50,7 +50,7 @@ class ProductServiceTest {
                 .build();
 
         //when
-        ProductResponse productResponse = productService.createProduct(request);
+        ProductResponse productResponse = productService.createProduct(request.toServiceRequest());
 
         List<Product> products = productRepository.findAll();
         //then
@@ -79,7 +79,7 @@ class ProductServiceTest {
                 .build();
 
         //when
-        ProductResponse productResponse = productService.createProduct(request);
+        ProductResponse productResponse = productService.createProduct(request.toServiceRequest());
 
         List<Product> products = productRepository.findAll();
 

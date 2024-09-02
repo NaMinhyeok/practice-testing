@@ -1,4 +1,4 @@
-package sample.cafekiosk.api.service.order;
+package sample.cafekiosk.api.service.order.response;
 
 import lombok.Builder;
 import lombok.Getter;
