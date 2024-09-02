@@ -9,7 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import sample.cafekiosk.api.controller.order.request.OrderCreateRequest;
-import sample.cafekiosk.api.service.order.response.OrderService;
+import sample.cafekiosk.api.service.order.OrderService;
 
 import java.util.List;
 

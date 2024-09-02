@@ -8,7 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.api.controller.order.request.OrderCreateRequest;
 import sample.cafekiosk.api.service.order.response.OrderResponse;
-import sample.cafekiosk.api.service.order.response.OrderService;
 import sample.cafekiosk.domain.order.OrderRepository;
 import sample.cafekiosk.domain.orderproduct.OrderProductRepository;
 import sample.cafekiosk.domain.product.Product;
