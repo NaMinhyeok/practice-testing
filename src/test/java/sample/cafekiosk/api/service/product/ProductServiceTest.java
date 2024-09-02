@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import sample.cafekiosk.api.controller.product.dto.request.ProductCreateRequest;
+import sample.cafekiosk.api.service.product.request.ProductCreateServiceRequest;
 import sample.cafekiosk.api.service.product.response.ProductResponse;
 import sample.cafekiosk.domain.product.Product;
 import sample.cafekiosk.domain.product.ProductRepository;
@@ -42,7 +43,7 @@ class ProductServiceTest {
         Product product = createProduct("001", HANDMADE, SELLING, "아메리카노", 4000);
         productRepository.save(product);
 
-        ProductCreateRequest request = ProductCreateRequest.builder()
+        ProductCreateServiceRequest request = ProductCreateServiceRequest.builder()
                 .type(HANDMADE)
                 .sellingStatus(SELLING)
                 .name("카푸치노")
@@ -50,7 +51,7 @@ class ProductServiceTest {
                 .build();
 
         //when
-        ProductResponse productResponse = productService.createProduct(request.toServiceRequest());
+        ProductResponse productResponse = productService.createProduct(request);
 
         List<Product> products = productRepository.findAll();
         //then
@@ -71,7 +72,7 @@ class ProductServiceTest {
     @Test
     void createProductWhenProductsIsEmpty() {
         //given
-        ProductCreateRequest request = ProductCreateRequest.builder()
+        ProductCreateServiceRequest request = ProductCreateServiceRequest.builder()
                 .type(HANDMADE)
                 .sellingStatus(SELLING)
                 .name("카푸치노")
@@ -79,7 +80,7 @@ class ProductServiceTest {
                 .build();
 
         //when
-        ProductResponse productResponse = productService.createProduct(request.toServiceRequest());
+        ProductResponse productResponse = productService.createProduct(request);
 
         List<Product> products = productRepository.findAll();
 

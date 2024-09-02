@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sample.cafekiosk.api.service.product.request.ProductCreateServiceRequest;
-import sample.cafekiosk.domain.product.Product;
 import sample.cafekiosk.domain.product.ProductSellingStatus;
 import sample.cafekiosk.domain.product.ProductType;
 
