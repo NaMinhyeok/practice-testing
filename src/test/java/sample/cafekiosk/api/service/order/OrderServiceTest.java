@@ -25,7 +25,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 import static sample.cafekiosk.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk.domain.product.ProductType.*;
 
-
 @Transactional
 class OrderServiceTest extends IntegrationTestSupport {
 
@@ -57,7 +56,7 @@ class OrderServiceTest extends IntegrationTestSupport {
     @Test
     void createOrder() {
         //given
-        LocalDateTime registerdDateTime = LocalDateTime.now();
+        LocalDateTime registeredDateTime = LocalDateTime.now();
 
         Product product1 = createProduct(HANDMADE, "001", 1000);
         Product product2 = createProduct(HANDMADE, "002", 3000);
@@ -68,13 +67,13 @@ class OrderServiceTest extends IntegrationTestSupport {
                 .productNumbers(List.of("001", "002"))
                 .build();
         //when
-        OrderResponse orderResponse = orderService.createOrder(request, registerdDateTime);
+        OrderResponse orderResponse = orderService.createOrder(request, registeredDateTime);
 
         //then
         assertThat(orderResponse.getId()).isNotNull();
         assertThat(orderResponse)
                 .extracting("registeredDateTime", "totalPrice")
-                .contains(registerdDateTime, 4000);
+                .contains(registeredDateTime, 4000);
 
         assertThat(orderResponse.getProducts()).hasSize(2)
                 .extracting("productNumber", "price")
