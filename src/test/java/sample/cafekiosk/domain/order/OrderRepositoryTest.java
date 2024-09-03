@@ -3,8 +3,7 @@ package sample.cafekiosk.domain.order;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
+import sample.cafekiosk.IntegrationTestSupport;
 import sample.cafekiosk.domain.product.Product;
 import sample.cafekiosk.domain.product.ProductRepository;
 import sample.cafekiosk.domain.product.ProductSellingStatus;
@@ -15,13 +14,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
-import static sample.cafekiosk.domain.order.OrderStatus.*;
+import static sample.cafekiosk.domain.order.OrderStatus.INIT;
 import static sample.cafekiosk.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk.domain.product.ProductType.HANDMADE;
 
-@ActiveProfiles("test")
-@SpringBootTest
-class OrderRepositoryTest {
+
+class OrderRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private OrderRepository orderRepository;

@@ -4,9 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import sample.cafekiosk.api.controller.order.request.OrderCreateRequest;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.IntegrationTestSupport;
 import sample.cafekiosk.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.api.service.order.response.OrderResponse;
 import sample.cafekiosk.domain.order.OrderRepository;
@@ -26,10 +25,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.tuple;
 import static sample.cafekiosk.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk.domain.product.ProductType.*;
 
-@ActiveProfiles("test")
-//@Transactional
-@SpringBootTest
-class OrderServiceTest {
+
+@Transactional
+class OrderServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
@@ -47,13 +45,13 @@ class OrderServiceTest {
     private OrderService orderService;
 
 
-    @AfterEach
-    void tearDown() {
-        orderProductRepository.deleteAllInBatch();
-        productRepository.deleteAllInBatch();
-        orderRepository.deleteAllInBatch();
-        stockRepository.deleteAllInBatch();
-    }
+//    @AfterEach
+//    void tearDown() {
+//        orderProductRepository.deleteAllInBatch();
+//        productRepository.deleteAllInBatch();
+//        orderRepository.deleteAllInBatch();
+//        stockRepository.deleteAllInBatch();
+//    }
 
     @DisplayName("주문번호 리스트를 받아 주문을 생성한다.")
     @Test

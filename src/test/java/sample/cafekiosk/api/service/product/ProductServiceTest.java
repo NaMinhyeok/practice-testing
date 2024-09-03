@@ -4,9 +4,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import sample.cafekiosk.api.controller.product.dto.request.ProductCreateRequest;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.IntegrationTestSupport;
 import sample.cafekiosk.api.service.product.request.ProductCreateServiceRequest;
 import sample.cafekiosk.api.service.product.response.ProductResponse;
 import sample.cafekiosk.domain.product.Product;
@@ -21,9 +20,8 @@ import static org.assertj.core.api.Assertions.tuple;
 import static sample.cafekiosk.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk.domain.product.ProductType.HANDMADE;
 
-@ActiveProfiles("test")
-@SpringBootTest
-class ProductServiceTest {
+@Transactional
+class ProductServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductService productService;
@@ -31,10 +29,10 @@ class ProductServiceTest {
     @Autowired
     private ProductRepository productRepository;
 
-    @AfterEach
-    void tearDown() {
-        productRepository.deleteAllInBatch();
-    }
+//    @AfterEach
+//    void tearDown() {
+//        productRepository.deleteAllInBatch();
+//    }
 
     @DisplayName("신규 상품을 등록한다. 상품 번호는 가장 최근 상품의 상품번호에서 1 증가한 값이다.")
     @Test
