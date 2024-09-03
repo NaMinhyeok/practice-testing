@@ -28,13 +28,13 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final StockRepository stockRepository;
 
-    public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registerdDateTime) {
+    public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registeredDateTime) {
         List<String> productNumbers = request.getProductNumbers();
         List<Product> products = findProductsBy(productNumbers);
 
         deductStockQuantities(products);
 
-        Order order = Order.create(products, registerdDateTime);
+        Order order = Order.create(products, registeredDateTime);
         Order savedOrder = orderRepository.save(order);
         return OrderResponse.of(savedOrder);
     }

@@ -1,6 +1,5 @@
 package sample.cafekiosk.docs.product;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -105,7 +104,7 @@ public class ProductControllerDocsTest extends RestDocsSupport {
 
     @DisplayName("판매된 상품을 조회하는 API")
     @Test
-    void test() throws Exception {
+    void getSellingProducts() throws Exception {
         given(productService.getSellingProducts())
             .willReturn(
                 List.of(

@@ -1,6 +1,7 @@
 package sample.cafekiosk.docs;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.restdocs.RestDocumentationContextProvider;
@@ -32,6 +33,7 @@ public abstract class RestDocsSupport {
         this.mockMvc = MockMvcBuilders.standaloneSetup(initController())
             .apply(documentationConfiguration(provider))
             .build();
+        this.objectMapper.registerModule(new JavaTimeModule());
     }
 
     protected abstract Object initController();
